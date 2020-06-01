@@ -1,4 +1,8 @@
 //app.js
+const baseObj = require('./utils/base');
+
+// const baseObj = new Base();
+
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -35,5 +39,7 @@ App({
   },
   globalData: {
     userInfo: null
-  }
+  },
+  request: baseObj.request,
+  base: baseObj
 })
