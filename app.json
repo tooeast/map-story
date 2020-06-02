@@ -1,15 +1,39 @@
 {
   "pages":[
     "pages/map/map",
+    "pages/own/own",
     "pages/index/index",
     "pages/logs/logs"
   ],
   "window":{
+		"navigationBarTitleText": "唱吧音视频",
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+		"navigationStyle": "custom",
+		"enablePullDownRefresh": false
   },
+
   "style": "v2",
+  "tabBar": {
+		"color": "#000",
+		"selectedColor": "#f00",
+		"backgroundColor": "#fff",
+		"list": [
+			{
+				"pagePath": "pages/logs/logs",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/map/map",
+				"text": "足迹"
+      },
+      {
+				"pagePath": "pages/own/own",
+				"text": "我的"
+			}
+		]
+	},
+
   "sitemapLocation": "sitemap.json"
 }

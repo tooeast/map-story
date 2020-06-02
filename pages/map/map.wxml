@@ -7,6 +7,7 @@
     controls="{{controls}}"
     bindcontroltap="controltap"
     markers="{{markers}}"
+    circles="{{circle}}"
     bindmarkertap="markertap"
     polyline="{{polyline}}"
     bindregionchange="regionchange"

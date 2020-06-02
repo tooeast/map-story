@@ -9,12 +9,30 @@ Page({
       latitude: 23.099994,
       longitude: 113.324520,
       name: 'T.I.T 创意园'
-    }]
+    }],
+    circle: [
+      {
+        latitude: 23.099994,
+        longitude: 113.324520,
+        color: '#fff',
+        fillColor: '#f00',
+        radius: 5,
+        strokeWidth: 1
+      }
+    ]
   },
   onReady: function (e) {
     this.mapCtx = wx.createMapContext('myMap')
 
     this.getPointList();
+  },
+  onShow() {
+    // wx.hideTabBar({
+    //   complete(err) {
+    //       console.log('隐藏了', err)
+    //   }
+    // });
+
   },
   async getPointList() {
     let res = await app.request('/api/map/MapPc/getPointsList');
@@ -25,7 +43,14 @@ Page({
         return {
           id: item.id,
           latitude: item.point.lat,
-          longitude: item.point.lng
+          longitude: item.point.lng,
+          iconPath: '../../images/red.png',
+          width: 20,
+          height: 20,
+          anchor: {
+            x: 0.5,
+            y: 0.5
+          }
         }
       });
 
