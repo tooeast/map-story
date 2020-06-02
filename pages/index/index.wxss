@@ -1,21 +1,190 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.container {
+  height: 100vh;
+  background-color: #f5f4ef;
+}
+.container .back-top {
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+}
+.container .back-top .search-area {
+      position: absolute;
+      top: 60rpx;
+      left: 45rpx;
+      line-height: 40rpx;
+      vertical-align: middle;
+      z-index: 1;
+}
+.container .back-top .search-area .text {
+        color: #fff;
+        font-size: 16px;
+        display: inline-block;
+        vertical-align: middle;
+}
+.container .back-top .search-area .input {
+        display: inline-block;
+        width: 300rpx;
+        height: 30px;
+        margin-left: 15rpx;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        vertical-align: middle;
+        box-shadow: 0 2rpx 40rpx 1rpx rgba(179, 179, 179, 0.3);
+}
+.container .back-top .page-banner .swiper {
+      width: 100%;
+      height: calc(510rpx + 33px);
+}
+.container .back-top .page-banner .swiper .swiper-main {
+        position: relative;
+}
+.container .back-top .page-banner .swiper .swiper-main .area {
+          position: relative;
+          width: 670rpx;
+          margin: calc(100rpx + 30px) auto 60rpx;
+          border-radius: 15rpx;
+          box-shadow: 0 2rpx 40rpx 1rpx rgba(143, 143, 143, 0.3);
+          overflow: hidden;
+          z-index: 1;
+}
+.container .back-top .page-banner .swiper .swiper-main .area .img {
+            display: block;
+            width: 100%;
+            height: 350rpx;
+}
+.container .back-top .page-banner .swiper .swiper-main .area .text {
+            position: absolute;
+            left: 15rpx;
+            bottom: 15rpx;
+            display: inline-block;
+            max-width: 600rpx;
+            font-size: 14px;
+            color: #fff;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+}
+.container .back-top .page-banner .swiper .swiper-main .back {
+          position: absolute;
+          left: -30rpx;
+          top: -30rpx;
+          right: -30rpx;
+          bottom: -30rpx;
+          -webkit-filter: blur(30rpx);
+                  filter: blur(30rpx);
+          z-index: 0;
+}
+.container .back-top .banner-point {
+      position: absolute;
+      left: 0;
+      bottom: 40rpx;
+      display: inline-block;
+      width: 100%;
+      height: 3px;
+      text-align: center;
+      line-height: 3px;
+      font-size: 0;
+}
+.container .back-top .banner-point .point {
+        display: inline-block;
+        width: 10rpx;
+        height: 3px;
+        background-color: rgba(255, 255, 255, 0.6);
+        margin: 0 3rpx;
+        border-radius: 1.5px;
+        -webkit-transition: .5s;
+        transition: .5s;
+}
+.container .back-top .banner-point .point.active {
+          width: 30rpx;
+          background-color: #fff;
+}
+.container .main-list {
+    position: relative;
+    margin-top: -20rpx;
+    padding: 40rpx 15rpx 0;
+    background-color: #f5f4ef;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+    z-index: 2;
+    color: #000;
+    font-size: 15px;
+}
+.container .main-list .title {
+      font-size: 15px;
+      color: #747474;
+      font-weight: bold;
+      margin-left: 5rpx;
+      margin-bottom: 5rpx;
+}
+.container .main-list .main {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+      -webkit-box-align: start;
+      -webkit-align-items: flex-start;
+              align-items: flex-start;
+}
+.container .main-list .main .area {
+        width: 358rpx;
+}
+.container .main-list .main .card {
+        background-color: #ffffff;
+        margin: 5rpx;
+        box-sizing: border-box;
+        margin-bottom: 15rpx;
+        border-radius: 8rpx;
+        overflow: hidden;
+        box-shadow: 0 0 15rpx 1rpx #eeeeee;
+}
+.container .main-list .main .card .card-top {
+          font-size: 0;
+          box-shadow: 0 -2rpx 10rpx 1rpx #f0f0f0;
+}
+.container .main-list .main .card .card-top image {
+            width: 100%;
+            max-height: 500rpx;
+}
+.container .main-list .main .card .card-bottom {
+          padding: 15rpx 15rpx;
+}
+.container .main-list .nomore {
+      font-size: 14px;
+      color: #747474;
+      text-align: center;
+      margin: 20rpx 0 40rpx;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
-}
