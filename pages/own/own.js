@@ -58,7 +58,7 @@ Page({
   },
   getMapLatlng() {
     wx.chooseLocation({
-      success (res) {
+      async success (res) {
         console.log('from map')
         console.log(res);
         // wx.openLocation({
@@ -66,6 +66,21 @@ Page({
         //   longitude,
         //   scale: 18
         // })
+
+        let res2 = await app.request('/api/map/MapPc/recordPoint', {
+          method: 'POST',
+          data: {
+            lat: res.latitude,
+            lng: res.longitude
+          }
+        });
+
+        // wx.openLocation({
+        //   latitude: res.latitude,
+        //   longitude: res.longitude,
+        //   scale: 18
+        // })
+
       }
      })
   }
