@@ -5,21 +5,17 @@ Page({
     latitude: 23.099994,
     longitude: 113.324520,
     markers: [{
-      id: 1,
+      id: 12141,
       latitude: 23.099994,
       longitude: 113.324520,
-      name: 'T.I.T 创意园'
-    }],
-    circle: [
-      {
-        latitude: 23.099994,
-        longitude: 113.324520,
-        color: '#fff',
-        fillColor: '#f00',
-        radius: 5,
-        strokeWidth: 1
+      iconPath: '../../images/red.png',
+      width: 20,
+      height: 20,
+      anchor: {
+        x: 0.5,
+        y: 0.5
       }
-    ]
+    }]
   },
   onReady: function (e) {
     this.mapCtx = wx.createMapContext('myMap')

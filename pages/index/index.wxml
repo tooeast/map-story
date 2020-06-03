@@ -1,15 +1,64 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-
-    <button bindtap="bindViewTap">点击获取</button>
+<scroll-view class="container" scroll-y lower-threshold="100">
+  <view class="back-top">
+    <view class="search-area">
+      <text class="text">欢迎来到程序汪的日常～</text>
+    </view>
+    <view class="page-banner">
+      <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-color="{{indicator}}" indicator-active-color="{{active}}" >
+        <block wx:for="{{ bannerList }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
+          <swiper-item class="swiper-main">
+            <navigator class="area">
+              <image class="img" src="{{ todo.img }}"></image>
+              <text class="text">{{ todo.title }}</text>
+            </navigator>
+            <view class="back" style="{{('background-image:url(' + todo.img + ')')}}"></view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    
+    <view class="banner-point">
+      <block wx:for="{{ bannerList.length }}" wx:for-item="key" wx:for-index="__i0__" wx:key="*this">
+        <view class="{{['point',key==activeBanner?'active':'']}}"></view>
+      </block>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  
+  <view class="main-list">
+    <view class="title">
+      <text>最近发现：</text>
+    </view>
+    
+    <view class="main">
+      <view class="area left" id="left">
+        <block wx:for="{{ leftList }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
+          <navigator class="card">
+            <view class="card-top">
+              <image src="{{ todo.poster }}" mode="widthFix"></image>
+            </view>
+            <view class="card-bottom">
+              <text>{{ todo.title }}</text>
+            </view>
+          </navigator>
+        </block>
+      </view>
+      
+      <view class="area right" id="right">
+        <block wx:for="{{ rightList }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
+          <navigator class="card">
+            <view class="card-top">
+              <image src="{{ todo.poster }}" mode="widthFix"></image>
+            </view>
+            <view class="card-bottom">
+              <text>{{ todo.title }}</text>
+            </view>
+          </navigator>
+        </block>
+      </view>
+    </view>
+    
+    <view class="nomore">
+      <text>{{bottomText}}</text>
+    </view>
   </view>
-</view>
+</scroll-view>

@@ -1,8 +1,8 @@
 {
   "pages":[
+    "pages/index/index",
     "pages/map/map",
     "pages/own/own",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "window":{
@@ -21,7 +21,7 @@
 		"backgroundColor": "#fff",
 		"list": [
 			{
-				"pagePath": "pages/logs/logs",
+				"pagePath": "pages/index/index",
 				"text": "首页"
 			},
 			{
