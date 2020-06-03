@@ -23,8 +23,6 @@ Page({
   },
   onReady: function (e) {
     this.mapCtx = wx.createMapContext('myMap')
-
-    this.getPointList();
   },
   onShow() {
     // wx.hideTabBar({
@@ -32,6 +30,8 @@ Page({
     //       console.log('隐藏了', err)
     //   }
     // });
+
+    this.getPointList();
 
   },
   async getPointList() {
