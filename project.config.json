@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
@@ -66,6 +66,19 @@
 					"name": "pages/own/own",
 					"pathName": "pages/own/own",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/map/map",
+					"pathName": "pages/map/map",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "picker",
+					"pathName": "pages/picker/picker",
 					"scene": null
 				}
 			]

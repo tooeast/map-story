@@ -39,6 +39,7 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
+          console.log(res);
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
@@ -56,32 +57,38 @@ Page({
       hasUserInfo: true
     })
   },
-  getMapLatlng() {
-    wx.chooseLocation({
-      async success (res) {
-        console.log('from map')
-        console.log(res);
-        // wx.openLocation({
-        //   latitude,
-        //   longitude,
-        //   scale: 18
-        // })
+  async getMapLatlng() {
+    const pos = await app.base.chooseLocation();
 
-        let res2 = await app.request('/api/map/MapPc/recordPoint', {
-          method: 'POST',
-          data: {
-            lat: res.latitude,
-            lng: res.longitude
-          }
-        });
+    console.log('pos', pos);
+    // wx.chooseLocation({
+    //   async success (res) {
+    //     console.log('from map')
+    //     console.log(res);
+    //     // wx.openLocation({
+    //     //   latitude,
+    //     //   longitude,
+    //     //   scale: 18
+    //     // })
 
-        // wx.openLocation({
-        //   latitude: res.latitude,
-        //   longitude: res.longitude,
-        //   scale: 18
-        // })
-
+    let res2 = await app.request('/api/map/MapPc/recordPoint', {
+      method: 'POST',
+      data: {
+        lat: pos.latitude,
+        lng: pos.longitude
       }
-     })
+    });
+
+    //     // wx.openLocation({
+    //     //   latitude: res.latitude,
+    //     //   longitude: res.longitude,
+    //     //   scale: 18
+    //     // })
+
+    //   }
+    //  })
+  },
+  wxLogin(e) {
+    app.base.login(e);
   }
 })

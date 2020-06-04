@@ -1,0 +1,20 @@
+<!--logs.wxml-->
+<view class="container log-list">
+  <view class="picker-wraper">
+    <view class="story">
+      <view class="sub-text">故事内容</view>
+      <textarea class="story-txt" placeholder="说出你的足迹故事..." focus />
+    </view>
+
+    <view class="title">
+      <view class="sub-text">标题</view>
+      <input class="title-ipt" placeholder="起个标题吧"/>
+    </view>
+
+    <view class="title">
+
+      <view class="sub-text">富文本</view>
+      <editor/>
+    </view>
+  </view>
+</view>

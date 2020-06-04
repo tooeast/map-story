@@ -10,6 +10,8 @@
     <button bindtap="bindViewTap">点击获取</button>
 
     <button bindtap="getMapLatlng">获取地图选点</button>
+
+    <button open-type="getUserInfo" bindgetuserinfo="wxLogin">登陆</button>
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>

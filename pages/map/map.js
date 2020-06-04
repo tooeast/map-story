@@ -2,20 +2,15 @@ const app = getApp()
 
 Page({
   data: {
-    latitude: 23.099994,
-    longitude: 113.324520,
-    markers: [{
-      id: 12141,
-      latitude: 23.099994,
-      longitude: 113.324520,
-      iconPath: '../../images/red.png',
-      width: 20,
-      height: 20,
-      anchor: {
-        x: 0.5,
-        y: 0.5
-      }
-    }]
+    latitude: 28.304380682962783,
+    longitude:104.94140625,
+    markers: [],
+    markersShow: [],
+    markersNoCall: [],
+    iconList: [
+      'blue', 'cherry', 'deepblue', 'green', 'purple', 'red', 'yellow'
+    ],
+    isShowCall: true
   },
   onReady: function (e) {
     this.mapCtx = wx.createMapContext('myMap')
@@ -35,64 +30,83 @@ Page({
 
     if(res.code == 0) {
       console.log(res);
-      let markers = res.data.map(item => {
-        return {
+      let markersShow = [];
+      let markersNoCall = [];
+      let todo, todoTwo, color;
+      res.data.map(item => {
+        color = this.getRandColorIcon()
+        todo = {
           id: item.id,
           latitude: item.point.lat,
           longitude: item.point.lng,
-          iconPath: '../../images/red.png',
+          iconPath: color,
           width: 20,
           height: 20,
           anchor: {
             x: 0.5,
             y: 0.5
+          },
+          zIndex: 100
+        }
+
+        markersNoCall.push(todo);
+
+        todoTwo = {
+          id: item.id,
+          latitude: item.point.lat,
+          longitude: item.point.lng,
+          iconPath: color,
+          width: 20,
+          height: 20,
+          anchor: {
+            x: 0.5,
+            y: 0.5
+          },
+          zIndex: 100,
+          callout: {
+            content: '这就是标注',
+            display: 'ALWAYS',
+            padding: 2,
+            borderRadius: 2,
+            anchorY: 15
           }
         }
+
+        markersShow.push(todoTwo);
       });
 
+
+      console.log('no', markersNoCall);
+      console.log('yes', markersShow)
+
       this.setData({
-        markers: markers
+        markers: markersShow,
+        markersShow: markersShow,
+        markersNoCall: markersNoCall
       })
     }
   },
-  // getCenterLocation: function () {
-  //   this.mapCtx.getCenterLocation({
-  //     success: function(res){
-  //       console.log(res.longitude)
-  //       console.log(res.latitude)
-  //     }
-  //   })
-  // },
-  // moveToLocation: function () {
-  //   this.mapCtx.moveToLocation()
-  // },
-  // translateMarker: function() {
-  //   this.mapCtx.translateMarker({
-  //     markerId: 1,
-  //     autoRotate: true,
-  //     duration: 1000,
-  //     destination: {
-  //       latitude:23.10229,
-  //       longitude:113.3345211,
-  //     },
-  //     animationEnd() {
-  //       console.log('animation end')
-  //     }
-  //   })
-  // },
-  // includePoints: function() {
-  //   this.mapCtx.includePoints({
-  //     padding: [10],
-  //     points: [{
-  //       latitude:23.10229,
-  //       longitude:113.3345211,
-  //     }, {
-  //       latitude:23.00229,
-  //       longitude:113.3345211,
-  //     }]
-  //   })
-  // },
+  getRandColorIcon() {
+    return '../../images/' + this.data.iconList[Math.floor(Math.random() * this.data.iconList.length)] + '.png';
+  },
+  maptap(e) {
+    console.log(e)
+  },
   markertap(e) {
     console.log(e);
+  },
+  isShowCallBtn() {
+    if(this.data.isShowCall) {
+      this.setData({
+        isShowCall: false,
+        markers: this.data.markersNoCall
+      })
+    }
+    else {
+      this.setData({
+        isShowCall: true,
+        markers: this.data.markersShow
+      })
+    }
   }
 })

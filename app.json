@@ -3,8 +3,13 @@
     "pages/index/index",
     "pages/map/map",
     "pages/own/own",
-    "pages/logs/logs"
+    "pages/picker/picker"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于开始地图选点"
+    }
+  },
   "window":{
 		"navigationBarTitleText": "唱吧音视频",
     "backgroundTextStyle":"light",

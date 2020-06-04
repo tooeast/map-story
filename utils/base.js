@@ -1,4 +1,4 @@
-const URI = 'http://vps.521plus.com';
+const URI = 'https://vps.521plus.com/';
 
 const wxRequest = (url, opt) => {
   return new Promise((res, rej) => {
@@ -20,9 +20,17 @@ const request = async (url, opt) => {
     url = URI + url;
   }
 
-  console.log('url', url)
+  // console.log('url', url)
+  let sessionKey = wx.getStorageSync('sessionInfo');
+  
+  console.log('sessionKey', sessionKey);
+
+  if (sessionKey) {
+    options.data['sessionInfo'] = sessionKey;
+  }
+
   if(!options.method) {
-    options.method = 'GET';
+    options.method = 'POST';
   }
   let header = {
     'Content-Type': 'application/x-www-form-urlencoded'
@@ -77,4 +85,62 @@ const request = async (url, opt) => {
   }
 }
 
-module.exports = { request };
+const login = async e => {
+  console.log('from login', e);
+  wx.login({
+    async success (res) {
+      if (res.code) {
+        //发起网络请求
+        const result = await request('/api/map/MapBase/wxlogin', {
+          method: 'POST',
+          data: {
+            code: res.code,
+            encryoteData: e.detail.encryptedData,
+            iv: e.detail.iv,
+            rawData: e.detail.rawData
+          }
+        });
+
+        console.log(result);
+
+        if(result.code == 0) {
+          wx.setStorageSync('userInfo', e.detail.userInfo);
+          wx.setStorageSync('sessionInfo', result.data.sessionInfo);
+        }
+
+        console.log('res', result);
+      } else {
+        console.log('登录失败！' + res.errMsg)
+      }
+    }
+  })
+}
+
+const chooseLocation = () => {
+  return new Promise((res, rej) => {
+    wx.authorize({
+      scope: "scope.userLocation",
+      success: () => {
+        wx.chooseLocation({
+          success (result) {
+            res(result);
+          },
+          fail (err) {
+            rej(err);
+          }
+        })
+      },
+      fail: e => {
+        wx.showModal({
+          title: '提示',
+          content: '需开启位置授权才能选择地点',
+          showCancel: false
+        })
+  
+      }
+    })
+
+  })
+}
+
+module.exports = { request, login, chooseLocation };

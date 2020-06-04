@@ -9,3 +9,21 @@
   /* padding: 200rpx 0; */
   box-sizing: border-box;
 } 
+
+button {
+  display: block;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+}
+
+button:not([size='mini']) {
+  width: unset;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+  

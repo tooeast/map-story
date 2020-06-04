@@ -1,17 +1,16 @@
 <!--index.wxml-->
 <view class="container">
-  <map id="map"
-    longitude="113.324520"
-    latitude="23.099994"
-    scale="3"
-    controls="{{controls}}"
-    bindcontroltap="controltap"
-    markers="{{markers}}"
-    circles="{{circle}}"
-    bindmarkertap="markertap"
-    polyline="{{polyline}}"
-    bindregionchange="regionchange"
-    show-location
-    class="map"
-  ></map>
+  <view class="map-area">
+    <map id="map"
+      longitude="{{longitude}}"
+      latitude="{{latitude}}"
+      scale="3"
+      markers="{{markers}}"
+      bindmarkertap="markertap"
+      bindtap="maptap"
+      class="map"
+    ></map>
+
+    <button class="map-btn" size="mini" bindtap="isShowCallBtn">{{ isShowCall ? '隐藏气泡' : '显示气泡' }}</button>
+  </view>
 </view>
