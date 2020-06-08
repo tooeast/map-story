@@ -2,10 +2,10 @@
 .container {
   width: 100%;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
   /* padding: 200rpx 0; */
   box-sizing: border-box;
 } 
@@ -24,6 +24,5 @@ button:not([size='mini']) {
   width: unset;
   margin-left: auto;
   margin-right: auto;
-  
 }
   

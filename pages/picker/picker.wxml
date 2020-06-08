@@ -1,20 +1,38 @@
 <!--logs.wxml-->
-<view class="container log-list">
+<view class="container picker-list">
+  <view class="top-bar">
+    <view class="cancel" catchtap="goBack">{{ '<' }} 取消</view>
+    <!-- <view class="submit">提交</view> -->
+  </view>
+
   <view class="picker-wraper">
-    <view class="story">
+    <view class="story box">
       <view class="sub-text">故事内容</view>
-      <textarea class="story-txt" placeholder="说出你的足迹故事..." focus />
+      <textarea class="story-txt" placeholder="说出你的足迹故事..." focus bindblur="getStory" />
     </view>
 
-    <view class="title">
+    <view class="title box">
       <view class="sub-text">标题</view>
-      <input class="title-ipt" placeholder="起个标题吧"/>
+      <input class="title-ipt"  bindblur="getTitle" placeholder="起个标题吧"/>
     </view>
 
-    <view class="title">
+    <view class="pos box">
+      <view class="pos-btn" catchtap="choosePos" hover-class="pos-hover">
+        <view class="pos-txt">获取位置</view>
+      </view>
+      <view class="pos-input-area">
+        <input class="pos-ipt" wx:if="{{ address }}" value="{{ address }}" placeholder="起个标题吧" bindblur="getAddress"/>
+      </view>
+    </view>
+
+    <view class="btn-area box">
+      <view size="mini" class="submit" hover-class="submit-hover" hover-stay-time="40" catchtap="submitPoint">提 交</view>
+    </view>
+
+    <!-- <view class="title">
 
       <view class="sub-text">富文本</view>
       <editor/>
-    </view>
+    </view> -->
   </view>
 </view>

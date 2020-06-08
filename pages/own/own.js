@@ -57,36 +57,10 @@ Page({
       hasUserInfo: true
     })
   },
-  async getMapLatlng() {
-    const pos = await app.base.chooseLocation();
-
-    console.log('pos', pos);
-    // wx.chooseLocation({
-    //   async success (res) {
-    //     console.log('from map')
-    //     console.log(res);
-    //     // wx.openLocation({
-    //     //   latitude,
-    //     //   longitude,
-    //     //   scale: 18
-    //     // })
-
-    let res2 = await app.request('/api/map/MapPc/recordPoint', {
-      method: 'POST',
-      data: {
-        lat: pos.latitude,
-        lng: pos.longitude
-      }
-    });
-
-    //     // wx.openLocation({
-    //     //   latitude: res.latitude,
-    //     //   longitude: res.longitude,
-    //     //   scale: 18
-    //     // })
-
-    //   }
-    //  })
+  getMapLatlng() {
+    wx.navigateTo({
+      url: '/pages/picker/picker',
+    })
   },
   wxLogin(e) {
     app.base.login(e);

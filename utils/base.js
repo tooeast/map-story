@@ -126,7 +126,12 @@ const chooseLocation = () => {
             res(result);
           },
           fail (err) {
-            rej(err);
+            // rej(err);
+            wx.showModal({
+              title: '提示',
+              content: '获取地图定位失败！',
+              showCancel: false
+            })
           }
         })
       },
@@ -143,4 +148,8 @@ const chooseLocation = () => {
   })
 }
 
-module.exports = { request, login, chooseLocation };
+const trim = str => {
+  return str.replace(/^\s+|\s+$/g, '');
+}
+
+module.exports = { request, login, chooseLocation, trim };
