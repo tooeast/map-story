@@ -1,5 +1,5 @@
 <!--logs.wxml-->
-<wxs src="./../../filter/filter.wxs" module="tools" />
+<wxs src="./../../filter/tools.wxs" module="tools" />
 
 <view class="story-area {{ isShow ? 'show' : '' }}" catchtap="hide">
   <view class="main" catchtap="noHide">
@@ -12,11 +12,13 @@
       <view class="title">{{ story.title }}</view>
     </view>
     <view class="info-area">
-      <view class="address">{{ story.address }}</view>
+      <view class="address">
+        <view class="address-txt">{{ story.address }}</view>
+      </view>
       <view class="time">{{ tools.calcTime(story.addtime) }}</view>
     </view>
-    <view class="content">
-      {{ story.story }}
+    <view class="content-area">
+      <view class="contnet">{{ story.story }}</view>
     </view>
   </view>
 </view>

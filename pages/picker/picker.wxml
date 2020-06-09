@@ -8,12 +8,12 @@
   <view class="picker-wraper">
     <view class="story box">
       <view class="sub-text">故事内容</view>
-      <textarea class="story-txt" placeholder="说出你的足迹故事..." focus bindblur="getStory" />
+      <textarea class="story-txt" auto-height maxlength="1600" placeholder="说出你的足迹故事..." focus bindblur="getStory" />
     </view>
 
     <view class="title box">
       <view class="sub-text">标题</view>
-      <input class="title-ipt"  bindblur="getTitle" placeholder="起个标题吧"/>
+      <input class="title-ipt" maxlength="60" bindblur="getTitle" placeholder="起个标题吧"/>
     </view>
 
     <view class="pos box">

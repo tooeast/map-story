@@ -57,10 +57,30 @@ Page({
     //   return;
     // }
 
-    if(!this.data.lat || !this.data.lng || !this.data.address || !this.data.title) {
+    if(!this.data.title) {
       wx.showModal({
         title: '提示',
-        content: '输入内容不能为空哦~',
+        content: '起一个标题才能发布哦~',
+        showCancel: false
+      });
+
+      return;
+    }
+
+    if(!this.data.story) {
+      wx.showModal({
+        title: '提示',
+        content: '没有故事怎么能算是旅行呢！',
+        showCancel: false
+      });
+
+      return;
+    }
+
+    if(!this.data.lat || !this.data.lng || !this.data.address) {
+      wx.showModal({
+        title: '提示',
+        content: '请先获取位置哦~',
         showCancel: false
       });
 
