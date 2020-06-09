@@ -69,7 +69,7 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "pages/map/map",
 					"pathName": "pages/map/map",
 					"query": "",
@@ -79,6 +79,7 @@
 					"id": -1,
 					"name": "picker",
 					"pathName": "pages/picker/picker",
+					"query": "",
 					"scene": null
 				}
 			]

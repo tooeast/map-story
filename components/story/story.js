@@ -11,7 +11,8 @@ Component({
   data: {
     title:  'hello 我是组件模版 ~ !!',
     isShow: false,
-    story: {}
+    story: {},
+    poster: '//blog.sansiro.me/image/2019-last-time.jpg'
   },
 
   observers: {

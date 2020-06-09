@@ -1,9 +1,22 @@
 <!--logs.wxml-->
+<wxs src="./../../filter/filter.wxs" module="tools" />
+
 <view class="story-area {{ isShow ? 'show' : '' }}" catchtap="hide">
   <view class="main" catchtap="noHide">
-    <view>{{ story.title }}</view>
+    <!-- <view>{{ story.title }}</view>
     <view>{{ story.addtime }}</view>
     <view>{{ story.address }}</view>
-    <view>{{ story.story }}</view>
+    <view>{{ story.story }}</view> -->
+
+    <view class="title-area" style="{{ 'background-image:url( ' + poster + ')' }}">
+      <view class="title">{{ story.title }}</view>
+    </view>
+    <view class="info-area">
+      <view class="address">{{ story.address }}</view>
+      <view class="time">{{ tools.calcTime(story.addtime) }}</view>
+    </view>
+    <view class="content">
+      {{ story.story }}
+    </view>
   </view>
 </view>

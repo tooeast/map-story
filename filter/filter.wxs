@@ -1,0 +1,36 @@
+
+  var calcTime = function (time) {
+    var str = String(time).replace('/-/g',"/");
+  
+    var newSS = new Date(str);
+  
+    var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  
+    var res = month[newSS.getMonth()] + "." + newSS.getDate() + " " + newSS.getFullYear() + " " + getMoon(newSS.getHours());
+  
+    return res;
+  }
+  
+  var getMoon = function (hour) {
+    let res;
+    if(hour >= 0 && hour < 4) {
+      res = "凌晨";
+    } else if(hour < 9) {
+      res = "早晨";
+    } else if(hour < 11) {
+      res = "上午";
+    } else if(hour < 15) {
+      res = "中午";
+    } else if(hour < 19) {
+      res = "下午";
+    } else {
+      res = "晚上";
+    }
+  
+    return res;
+  }
+  
+  module.exports = {
+    calcTime: calcTime
+  }
+  
