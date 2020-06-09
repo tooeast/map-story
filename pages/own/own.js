@@ -5,64 +5,49 @@ const app = getApp()
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    userInfo: app.globalData.userInfo,
+    mapInfo: {},
+    isLogin: app.globalData.isLogin,
+    num: 0
   },
-  //事件处理函数
-  bindViewTap: function() {
-    // wx.navigateTo({
-    //   url: '../logs/logs'
-    // })
-    app.request('/api/map/MapPc/getPointsList', {
-      data: {
-        id: 1000
-      }
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          console.log(res);
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
+  onShow() {
+    if(this.data.isLogin) {
+      this.getMapInfo();
     }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
   },
   getMapLatlng() {
     wx.navigateTo({
       url: '/pages/picker/picker',
     })
   },
-  wxLogin(e) {
-    app.base.login(e);
+  async wxLogin(e) {
+    console.log('login')
+    let res = await app.base.login(e);
+
+    console.log(res);
+
+    if(res.code == 0) {
+      this.getBaseInfo();
+      this.getMapInfo();
+    }
+  },
+  async getMapInfo() {
+    let res = await app.request('/api/map/MapPc/getUserMapNum');
+
+    if(res.code == 0) {
+      this.setData({
+        num: res.data
+      });
+    }
+  },
+  getBaseInfo() {
+    let userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      isLogin: true,
+      userInfo: userInfo
+    });
+
+    app.globalData.isLogin = true;
+    app.globalData.userInfo = userInfo;
   }
 })

@@ -10,7 +10,9 @@ Page({
     iconList: [
       'blue', 'cherry', 'deepblue', 'green', 'purple', 'red', 'yellow'
     ],
-    isShowCall: true
+    isShowCall: true,
+    showMakerId: null,
+    isShowStory: false
   },
   onReady: function (e) {
     this.mapCtx = wx.createMapContext('myMap')
@@ -22,13 +24,16 @@ Page({
     //   }
     // });
 
-    this.getPointList();
+    if(app.globalData.isHaveNew) {
+      this.getPointList();
+    }
 
   },
   async getPointList() {
     let res = await app.request('/api/map/MapPc/getPointsList');
 
     if(res.code == 0) {
+      app.globalData.isHaveNew = false
       console.log(res);
       let markersShow = [];
       let markersNoCall = [];
@@ -64,20 +69,17 @@ Page({
           },
           zIndex: 100,
           callout: {
-            content: '这就是标注',
+            content: item.title,
             display: 'ALWAYS',
             padding: 2,
-            borderRadius: 2,
-            anchorY: 15
+            borderRadius: 4,
+            anchorY: 10,
+            fontSize: 14
           }
         }
 
         markersShow.push(todoTwo);
       });
-
-
-      console.log('no', markersNoCall);
-      console.log('yes', markersShow)
 
       this.setData({
         markers: markersShow,
@@ -94,6 +96,11 @@ Page({
   },
   markertap(e) {
     console.log(e);
+
+    this.setData({
+      showMakerId: e.detail.markerId,
+      isShowStory: true
+    })
   },
   isShowCallBtn() {
     if(this.data.isShowCall) {

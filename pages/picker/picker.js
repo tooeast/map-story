@@ -7,7 +7,8 @@ Page({
     lng: null,
     address: '',
     content: '',
-    title: ''
+    title: '',
+    isClick: false
   },
   onLoad() {
 
@@ -52,6 +53,10 @@ Page({
     console.log(this.data.address);
   },
   async submitPoint() {
+    // if(this.data.isClick) {
+    //   return;
+    // }
+
     if(!this.data.lat || !this.data.lng || !this.data.address || !this.data.title) {
       wx.showModal({
         title: '提示',
@@ -61,6 +66,10 @@ Page({
 
       return;
     }
+
+    this.setData({
+      isClick: true
+    })
 
 
     let params = {
@@ -77,5 +86,30 @@ Page({
       method: 'POST',
       data: params
     });
+
+    if(res.code == 0) {
+      wx.showToast({
+        title: '记录成功哦！',
+        icon: 'success',
+        duration: 1500
+      });
+
+      app.globalData.isHaveNew = true;
+
+      setTimeout(() => {
+        this.setData({
+          isClick: true
+        });
+
+        this.goBack();
+      }, 1000)
+
+      // this.goBack();
+    }
+    else {
+      this.setData({
+        isClick: false
+      })
+    }
   }
 })

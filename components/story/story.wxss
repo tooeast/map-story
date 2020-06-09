@@ -1,0 +1,34 @@
+.story-area {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: rgba(0, 0, 0, 0.2); */
+
+  background-color: rgba(0, 0, 0, 0);
+  z-index: -1;
+  transition: .4s;
+
+  /* z-index: 100; */
+}
+
+.story-area.show {
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.story-area.show .main {
+  transform: translateY(0);
+}
+
+.main {
+  width: 500rpx;
+  height: 500rpx;
+  margin:  400rpx auto 0;
+  background-color: #fff;
+  z-index: 101;
+  border-radius: 10rpx;
+  transform: translateY(100vh);
+  transition: .4s;
+}

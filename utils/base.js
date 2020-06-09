@@ -85,35 +85,73 @@ const request = async (url, opt) => {
   }
 }
 
+const wxLogin = () => {
+  return new Promise((res, rej) => {
+    wx.login({
+      success(result) {
+        if(result.code) {
+          res(result)
+        }
+        else {
+          wx.showModal({
+            title: '提示',
+            content: '登陆失败！',
+            showCancel: false
+          })
+        }
+      },
+      fail() {
+        wx.showModal({
+          title: '提示',
+          content: '登陆失败！',
+          showCancel: false
+        })
+      }
+    })
+  })
+}
+
 const login = async e => {
   console.log('from login', e);
-  wx.login({
-    async success (res) {
-      if (res.code) {
-        //发起网络请求
-        const result = await request('/api/map/MapBase/wxlogin', {
-          method: 'POST',
-          data: {
-            code: res.code,
-            encryoteData: e.detail.encryptedData,
-            iv: e.detail.iv,
-            rawData: e.detail.rawData
-          }
-        });
+  let res = await wxLogin();
+  if (res.code) {
+    //发起网络请求
+    const result = await request('/api/map/MapBase/wxlogin', {
+      method: 'POST',
+      data: {
+        code: res.code,
+        encryoteData: e.detail.encryptedData,
+        iv: e.detail.iv,
+        rawData: e.detail.rawData
+      }
+    });
 
-        console.log(result);
+    console.log(result);
 
-        if(result.code == 0) {
-          wx.setStorageSync('userInfo', e.detail.userInfo);
-          wx.setStorageSync('sessionInfo', result.data.sessionInfo);
-        }
+    if(result.code == 0) {
+      wx.setStorageSync('userInfo', e.detail.userInfo);
+      wx.setStorageSync('sessionInfo', result.data.sessionInfo);
 
-        console.log('res', result);
-      } else {
-        console.log('登录失败！' + res.errMsg)
+      wx.showToast({
+        title: '登陆成功！',
+        icon: 'success',
+        duration: 1500
+      })
+
+      return {
+        code: 0
       }
     }
-  })
+    else {
+      return {
+        code: -1
+      }
+    }
+  } else {
+    return {
+      code: -101
+    }
+  }
 }
 
 const chooseLocation = () => {
