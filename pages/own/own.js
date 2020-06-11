@@ -49,5 +49,37 @@ Page({
 
     app.globalData.isLogin = true;
     app.globalData.userInfo = userInfo;
+  },
+
+  chooseImg() {
+    console.log('chooseImg');
+
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success (res) {
+        console.log(res);
+        // tempFilePath可以作为img标签的src属性显示图片
+        const tempFilePaths = res.tempFilePaths
+
+        console.log(tempFilePaths);
+
+        for (let i = 0; i < tempFilePaths.length; i++) {
+          wx.uploadFile({
+            url: "https://vps.521plus.com/api/common/Public/uploadImage",
+            filePath: tempFilePaths[i],
+            formData: {
+              type: 'mapstory'
+            },
+            name: 'file',
+            success: function(res) {
+              wx.hideLoading();
+              console.log(res);
+            }
+          })
+        }
+      }
+    })
   }
 })

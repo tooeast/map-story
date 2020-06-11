@@ -3,22 +3,36 @@
 
 <view class="story-area {{ isShow ? 'show' : '' }}" catchtap="hide">
   <view class="main" catchtap="noHide">
-    <!-- <view>{{ story.title }}</view>
-    <view>{{ story.addtime }}</view>
-    <view>{{ story.address }}</view>
-    <view>{{ story.story }}</view> -->
-
-    <view class="title-area" style="{{ 'background-image:url( ' + poster + ')' }}">
-      <view class="title">{{ story.title }}</view>
-    </view>
-    <view class="info-area">
-      <view class="address">
-        <view class="address-txt">{{ story.address }}</view>
+    <block wx:if="{{ !isLoading }}">
+      <view class="title-area" style="{{ 'background-image:url( ' + poster + ')' }}">
+        <view class="title">{{ story.title }}</view>
       </view>
-      <view class="time">{{ tools.calcTime(story.addtime) }}</view>
-    </view>
-    <view class="content-area">
-      <view class="contnet">{{ story.story }}</view>
-    </view>
+
+      <view class="info-area">
+        <view class="address">
+          <view class="address-txt">{{ story.address }}</view>
+        </view>
+        <view class="time">{{ tools.calcTime(story.addtime) }}</view>
+      </view>
+
+      <scroll-view scroll-x class="images-area" wx:if="{{ story.images && story.images.length }}">
+        <view class="images-scroll">
+          <block wx:for="{{ story.images }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
+            <image class="img-each" mode="aspectFill" src="{{ todo }}" catchtap="showAllScreen" data-url="{{ todo }}"></image>
+          </block>
+        </view>
+      </scroll-view>
+
+      <view class="content-area">
+        <view class="contnet">{{ story.story }}</view>
+        <view class="content-mask"></view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="loading">
+        <view class="icon"></view>
+        <view class="loading-txt">loading...</view>
+      </view>
+    </block>
   </view>
 </view>

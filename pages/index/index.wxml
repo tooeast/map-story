@@ -4,7 +4,7 @@
       <text class="text">欢迎来到程序汪的日常～</text>
     </view>
     <view class="page-banner">
-      <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-color="{{indicator}}" indicator-active-color="{{active}}" >
+      <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-color="{{indicator}}" indicator-active-color="{{active}}" bindchange="bannerChange">
         <block wx:for="{{ bannerList }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
           <swiper-item class="swiper-main">
             <navigator class="area">
@@ -18,8 +18,8 @@
     </view>
     
     <view class="banner-point">
-      <block wx:for="{{ bannerList.length }}" wx:for-item="key" wx:for-index="__i0__" wx:key="*this">
-        <view class="{{['point',key==activeBanner?'active':'']}}"></view>
+      <block wx:for="{{ bannerList.length }}" wx:for-item="key" wx:for-index="index" wx:key="index">
+        <view class="{{['point', key == activeBanner ? 'active' : '' ]}}"></view>
       </block>
     </view>
   </view>

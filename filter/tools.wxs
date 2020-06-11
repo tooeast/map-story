@@ -1,5 +1,11 @@
 
   var calcTime = function (time) {
+    console.log('time');
+    console.log(time);
+
+    if(!time) {
+      return;
+    }
     time = time + "";
     var str = time.replace('/-/g',"/");
     var reg = getRegExp('(\d{4})-(\d{2})-(\d{2})\s(\d{2}\:\d{2})\:\d{2}');

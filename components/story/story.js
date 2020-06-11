@@ -12,7 +12,8 @@ Component({
     title:  'hello 我是组件模版 ~ !!',
     isShow: false,
     story: {},
-    poster: '//blog.sansiro.me/image/2019-last-time.jpg'
+    poster: '//blog.sansiro.me/image/2019-last-time.jpg',
+    isLoading: false
   },
 
   observers: {
@@ -21,6 +22,10 @@ Component({
 
       if(Number(newId) > 0) {
         console.log('markerid change');
+
+        this.setData({
+          poster: '//blog.sansiro.me/image/2019-last-time.jpg'
+        })
 
         this.getInfoByMarkerId(newId);
       }
@@ -81,10 +86,18 @@ Component({
       return;
     },
     async getStoryInfo(pointId) {
+      this.setData({
+        isLoading: true
+      });
+
       let res = await app.request('/api/map/MapPc/getStoryInfo', {
         data: {
           pointid: pointId
         }
+      });
+
+      this.setData({
+        isLoading: false
       });
 
       if(res.code == 0) {
@@ -93,7 +106,21 @@ Component({
         this.setData({
           story: res.data
         })
+
+        if(res.data.images && res.data.images.length > 0) {
+          this.setData({
+            poster: res.data.images[0]
+          })
+        }
       }
+    },
+    showAllScreen(e) {
+      console.log(e);
+
+      wx.previewImage({
+        current: e.currentTarget.dataset.url, // 当前显示图片的http链接
+        urls: this.data.story.images // 需要预览的图片http链接列表
+      })
     }
   }
 })

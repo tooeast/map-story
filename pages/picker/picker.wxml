@@ -25,6 +25,17 @@
       </view>
     </view>
 
+    <view class="img box">
+      <view class="pos-btn" catchtap="chooseImg" hover-class="img-hover">
+        <view class="pos-txt">选择图片</view>
+      </view>
+      <view class="img-area">
+        <block wx:for="{{ imgList }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
+          <image class="img-each" mode="aspectFill" src="{{ todo }}"></image>
+        </block>
+      </view>
+    </view>
+
     <view class="btn-area box">
       <view size="mini" class="submit" hover-class="submit-hover" hover-stay-time="40" catchtap="submitPoint">提 交</view>
     </view>

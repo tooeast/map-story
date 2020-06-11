@@ -186,8 +186,27 @@ const chooseLocation = () => {
   })
 }
 
+const chooseImage = () => {
+  return new Promise((res, rej) => {
+    wx.chooseImage({
+      count: 9,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success (result) {
+        const tempFilePaths = result.tempFilePaths;
+
+        res(tempFilePaths);
+      }
+    });
+  });
+}
+
+const uploadPointInfo = () => {
+
+}
+
 const trim = str => {
   return str.replace(/^\s+|\s+$/g, '');
 }
 
-module.exports = { request, login, chooseLocation, trim };
+module.exports = { request, login, chooseLocation, trim, chooseImage };
