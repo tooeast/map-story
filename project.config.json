@@ -81,6 +81,20 @@
 					"pathName": "pages/picker/picker",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "manage",
+					"pathName": "pages/manage/manage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "article",
+					"pathName": "pages/article/article",
+					"query": "id=1044",
+					"scene": null
 				}
 			]
 		}

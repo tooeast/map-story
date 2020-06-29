@@ -1,0 +1,39 @@
+.about-area {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 11;
+  transition: .4s;
+}
+
+.about-area .main {
+  /* transform: translateY(0); */
+  transform: translate(-50%, -50%);
+}
+
+.main {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 600rpx;
+  /* min-height: 450rpx; */
+  background-color: #fff;
+  z-index: 12;
+  border-radius: 10rpx;
+  /* transform: translateY(100vh); */
+  transition: .4s;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,.1), 0 1px 10px 0 rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.1);
+  border-radius: 10rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  line-height: 2;
+  color: gray;
+  padding: 40rpx 0 40rpx 40rpx;
+
+}
+
+

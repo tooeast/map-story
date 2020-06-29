@@ -15,7 +15,7 @@
       <view class="new" hover-class="btn-hover" hover-stay-time="40" bindtap="getMapLatlng">
         <view class="new-txt">记录足迹</view>
       </view>
-      <view class="manage" hover-class="btn-hover" hover-stay-time="40">
+      <view class="manage" hover-class="btn-hover" hover-stay-time="40" bindtap="managePoint">
         <view class="new-txt">管理足迹</view>
       </view>
     </view>
@@ -28,7 +28,10 @@
   </block>
 
   <view class="menu-list">
-    <view class="menu-item" hover-class="menu-hover" hover-stay-time="40">关于</view>
-    <view class="menu-item" hover-class="menu-hover" hover-stay-time="40" catchtap="chooseImg">设置</view>
+    <view class="menu-item" hover-class="menu-hover" hover-stay-time="40" catchtap="feedbackPage">反馈</view>
+    <view class="menu-item" hover-class="menu-hover" hover-stay-time="40" catchtap="aboutPage">关于</view>
   </view>
+
+  <about isShow="{{ isShowAbout }}"></about>
+  <feedback isShow="{{ isShowFeedback }}"></feedback>
 </view>

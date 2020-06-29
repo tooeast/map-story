@@ -1,0 +1,46 @@
+<wxs src="./../../filter/tools.wxs" module="tools" />
+
+<view class="container">
+  <view class="back" bindtap="goBack"></view>
+
+  <view class="poster" wx:if="{{ articleInfo.images && articleInfo.images.length }}">
+    <image class="poster-img" src="{{ articleInfo.images[0] }}" mode="widthFix"></image>
+    <view class="poster-txt">{{ articleInfo.title }}</view>
+  </view>
+
+  <view class="main">
+    <view class="title" wx:if="{{ !articleInfo.images || !articleInfo.images.length }}">
+      <view class="title-txt">{{ articleInfo.title }}</view>
+    </view>
+
+    <view class="info" wx:if="{{ articleInfo.userInfo }}">
+      <view class="info-left">
+        <image class="avatar" lazy-load src="{{ articleInfo.userInfo.avatar }}"></image>
+        <view class="name">{{ articleInfo.userInfo.name }}</view>
+      </view>
+      <view class="info-right">
+        <view class="time">{{ tools.getSimTime(articleInfo.addtime) }}</view>
+      </view>
+    </view>
+
+    <view class="time" wx:else>{{ tools.getSimTime(articleInfo.addtime) }}</view>
+
+    <view class="loaction" wx:if="{{ articleInfo.address }}">
+      <view class="loc-txt">{{ articleInfo.address }}</view>
+    </view>
+
+    <view class="images" wx:if="{{ articleInfo.images && articleInfo.images.length }}">
+      <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-color="{{indicator}}" indicator-active-color="{{active}}">
+        <block wx:for="{{ articleInfo.images }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
+          <swiper-item class="item">
+            <image class="img" src="{{ todo }}" mode="aspectFill" catchtap="showAllScreen" data-url="{{ todo }}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+
+    <view class="content">
+      <view class="content-txt">{{ articleInfo.story }}</view>
+    </view>
+  </view>
+</view>

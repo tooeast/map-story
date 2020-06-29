@@ -1,0 +1,12 @@
+<!--logs.wxml-->
+<wxs src="./../../filter/tools.wxs" module="tools" />
+
+<view class="feedback-area" wx:if="{{ isShow }}" catchtap="hide">
+  <view class="main" catchtap="noHide">
+    <view>有任何问题请邮箱联系：</view>
+    <view>sansiro@sansiro.me</view>
+    <view>或扫描二维码添加微信</view>
+    <image class="qrcode" src="{{ qrcode }}" bindtap="showQRcode"></image>
+
+  </view>
+</view>

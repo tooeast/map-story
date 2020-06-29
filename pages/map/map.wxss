@@ -9,12 +9,22 @@
   height: 100%;
 }
 
-.map-btn {
+.map-btn, .map-reset {
   position: absolute;
   width: 100px;
-  left: 10rpx;
-  bottom: 10rpx;
+  /* left: 10rpx;
+  bottom: 10rpx; */
   padding: 5px 10px;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 3px;
+}
+
+.map-btn {
+  left: 10rpx;
+  bottom: 10rpx;
+}
+
+.map-reset {
+  right: 10rpx;
+  bottom: 10rpx;
 }

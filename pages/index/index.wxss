@@ -84,7 +84,7 @@
             bottom: 15rpx;
             display: inline-block;
             max-width: 600rpx;
-            font-size: 14px;
+            font-size: 15px;
             color: #fff;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -160,26 +160,6 @@
 }
 .container .main-list .main .area {
         width: 358rpx;
-}
-.container .main-list .main .card {
-        background-color: #ffffff;
-        margin: 5rpx;
-        box-sizing: border-box;
-        margin-bottom: 15rpx;
-        border-radius: 8rpx;
-        overflow: hidden;
-        box-shadow: 0 0 15rpx 1rpx #eeeeee;
-}
-.container .main-list .main .card .card-top {
-          font-size: 0;
-          box-shadow: 0 -2rpx 10rpx 1rpx #f0f0f0;
-}
-.container .main-list .main .card .card-top image {
-            width: 100%;
-            max-height: 500rpx;
-}
-.container .main-list .main .card .card-bottom {
-          padding: 15rpx 15rpx;
 }
 .container .main-list .nomore {
       font-size: 14px;

@@ -1,0 +1,4 @@
+  <view class="top-bar">
+    <view class="cancel" catchtap="goBack">{{ '<' }} {{ txt }}</view>
+    <!-- <view class="submit">提交</view> -->
+  </view>

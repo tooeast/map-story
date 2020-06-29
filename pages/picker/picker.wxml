@@ -1,9 +1,6 @@
 <!--logs.wxml-->
 <view class="container picker-list">
-  <view class="top-bar">
-    <view class="cancel" catchtap="goBack">{{ '<' }} 取消</view>
-    <!-- <view class="submit">提交</view> -->
-  </view>
+  <top-bar></top-bar>
 
   <view class="picker-wraper">
     <view class="story box">

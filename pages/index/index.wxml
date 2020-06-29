@@ -1,23 +1,23 @@
 <scroll-view class="container" scroll-y lower-threshold="100">
   <view class="back-top">
     <view class="search-area">
-      <text class="text">欢迎来到程序汪的日常～</text>
+      <text class="text">欢迎来到足迹故事～</text>
     </view>
     <view class="page-banner">
       <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-color="{{indicator}}" indicator-active-color="{{active}}" bindchange="bannerChange">
         <block wx:for="{{ bannerList }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
           <swiper-item class="swiper-main">
             <navigator class="area">
-              <image class="img" src="{{ todo.img }}"></image>
+              <image class="img" src="{{ todo.poster }}"></image>
               <text class="text">{{ todo.title }}</text>
             </navigator>
-            <view class="back" style="{{('background-image:url(' + todo.img + ')')}}"></view>
+            <view class="back" style="{{('background-image:url(' + todo.poster + ')')}}"></view>
           </swiper-item>
         </block>
       </swiper>
     </view>
     
-    <view class="banner-point">
+    <view class="banner-point" wx:if="{{ bannerList.length > 1 }}">
       <block wx:for="{{ bannerList.length }}" wx:for-item="key" wx:for-index="index" wx:key="index">
         <view class="{{['point', key == activeBanner ? 'active' : '' ]}}"></view>
       </block>
@@ -26,38 +26,40 @@
   
   <view class="main-list">
     <view class="title">
-      <text>最近发现：</text>
+      <text>精选：</text>
     </view>
     
     <view class="main">
       <view class="area left" id="left">
         <block wx:for="{{ leftList }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
-          <navigator class="card">
+          <!-- <navigator class="card">
             <view class="card-top">
               <image src="{{ todo.poster }}" mode="widthFix"></image>
             </view>
             <view class="card-bottom">
-              <text>{{ todo.title }}</text>
+              <view>{{ todo.title }}</view>
             </view>
-          </navigator>
+          </navigator> -->
+          <each-card info="{{ todo }}"></each-card>
         </block>
       </view>
       
       <view class="area right" id="right">
         <block wx:for="{{ rightList }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
-          <navigator class="card">
+          <!-- <navigator class="card">
             <view class="card-top">
               <image src="{{ todo.poster }}" mode="widthFix"></image>
             </view>
             <view class="card-bottom">
-              <text>{{ todo.title }}</text>
+              <view>{{ todo.title }}</view>
             </view>
-          </navigator>
+          </navigator> -->
+          <each-card info="{{ todo }}"></each-card>
         </block>
       </view>
     </view>
     
-    <view class="nomore">
+    <view class="nomore" wx:if="{{ isLoading }}">
       <text>{{bottomText}}</text>
     </view>
   </view>

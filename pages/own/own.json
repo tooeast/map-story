@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "about": "./../../components/about/about",
+    "feedback": "./../../components/feedback/feedback"
+  }
 }

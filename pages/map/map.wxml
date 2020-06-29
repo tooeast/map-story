@@ -4,7 +4,7 @@
     <map id="map"
       longitude="{{longitude}}"
       latitude="{{latitude}}"
-      scale="3"
+      scale="{{ scale }}"
       markers="{{markers}}"
       bindmarkertap="markertap"
       bindcallouttap="markertap"
@@ -12,6 +12,7 @@
     ></map>
 
     <button class="map-btn" size="mini" bindtap="isShowCallBtn">{{ isShowCall ? '隐藏气泡' : '显示气泡' }}</button>
+    <button class="map-reset" size="mini" bindtap="resetMap">复原</button>
   </view>
 
   <map-story markerId="{{ showMakerId }}"></map-story>

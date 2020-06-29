@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/map/map",
     "pages/own/own",
-    "pages/picker/picker"
+    "pages/picker/picker",
+    "pages/manage/manage",
+    "pages/article/article"
   ],
   "permission": {
     "scope.userLocation": {
@@ -11,7 +13,7 @@
     }
   },
   "window":{
-		"navigationBarTitleText": "唱吧音视频",
+		"navigationBarTitleText": "足迹古树",
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle":"black",
@@ -22,19 +24,25 @@
   "style": "v2",
   "tabBar": {
 		"color": "#000",
-		"selectedColor": "#f00",
-		"backgroundColor": "#fff",
+		"selectedColor": "#17ba17",
+		"backgroundColor": "rgba(255, 255, 255, 0.565)",
 		"list": [
 			{
-				"pagePath": "pages/index/index",
+        "pagePath": "pages/index/index",
+        "iconPath": "./images/home.png",
+				"selectedIconPath": "./images/home-s.png",
 				"text": "首页"
 			},
 			{
-				"pagePath": "pages/map/map",
+        "pagePath": "pages/map/map",
+        "iconPath": "./images/paw.png",
+				"selectedIconPath": "./images/paw-s.png",
 				"text": "足迹"
       },
       {
-				"pagePath": "pages/own/own",
+        "pagePath": "pages/own/own",
+        "iconPath": "./images/user.png",
+				"selectedIconPath": "./images/user-s.png",
 				"text": "我的"
 			}
 		]

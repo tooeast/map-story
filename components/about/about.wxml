@@ -1,0 +1,12 @@
+<!--logs.wxml-->
+<wxs src="./../../filter/tools.wxs" module="tools" />
+
+<view class="about-area" wx:if="{{ isShow }}" catchtap="hide">
+  <view class="main" catchtap="noHide">
+    <view>名称：足迹故事</view>
+    <view>版本：0.0.5</view>
+    <view>作者：sansiro</view>
+    <view>邮箱：sansiro@sansiro.me</view>
+
+  </view>
+</view>

@@ -11,20 +11,33 @@ Page({
       'blue', 'cherry', 'deepblue', 'green', 'purple', 'red', 'yellow'
     ],
     isShowCall: true,
-    showMakerId: 1063,
-    isShowStory: false
+    showMakerId: 1066,
+    isShowStory: false,
+    scale: 3
   },
   onReady: function (e) {
     this.mapCtx = wx.createMapContext('myMap')
   },
+  onLoad() {
+    // 未登录
+    if(!app.globalData.isLogin) {
+      wx.showModal({
+        title: '提示',
+        content: '登陆后才能获取您的足迹点，请先登陆哦～',
+        confirmText: '去登陆',
+        confirmColor: '#17ba17',
+        success (res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/own/own'
+            })
+          }
+        }
+      })
+    }
+  },
   onShow() {
-    // wx.hideTabBar({
-    //   complete(err) {
-    //       console.log('隐藏了', err)
-    //   }
-    // });
-
-    if(app.globalData.isHaveNew) {
+    if(app.globalData.isLogin && app.globalData.isHaveNew) {
       this.getPointList();
     }
 
@@ -115,5 +128,12 @@ Page({
         markers: this.data.markersShow
       })
     }
+  },
+  resetMap() {
+    this.setData({
+      latitude: 28.304380682962783,
+      longitude:104.94140625,
+      scale: 3
+    })
   }
 })

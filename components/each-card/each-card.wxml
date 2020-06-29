@@ -1,0 +1,28 @@
+<!--logs.wxml-->
+<wxs src="./../../filter/tools.wxs" module="tools" />
+
+<navigator class="card" url="{{ '/pages/article/article?id=' + info.dataid }}">
+  <view class="card-top">
+    <image src="{{ info.poster }}" mode="widthFix"></image>
+  </view>
+  <view class="card-bottom">
+    <view>{{ info.title }}</view>
+
+    <view class="userinfo" wx:if="{{ info.userInfo }}">
+      <view class="info-left">
+        <image class="avatar" lazy-load src="{{ info.userInfo.avatar }}"></image>
+      </view>
+      <view class="info-right">
+        <view class="name">{{ info.userInfo.name }}</view>
+        <view class="time">{{ tools.getSimTime(info.addtime) }}</view>
+      </view>
+    </view>
+
+    <view class="time" wx:else>{{ tools.getSimTime(info.addtime) }}</view>
+
+    <view class="loaction" wx:if="{{ info.address }}">
+      <view class="loc-txt">{{ info.address }}</view>
+    </view>
+  </view>
+</navigator>
+ 

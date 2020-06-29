@@ -1,0 +1,18 @@
+<scroll-view class="container" scroll-y lower-threshold="100">
+  <top-bar txt="返回"></top-bar>
+
+  <view class="each" wx:for="{{ list }}" wx:for-item="item" wx:for-index="index" wx:key="index">
+    <view class="title">{{ item.title }}</view>
+    <view class="img-area">
+      <block wx:for="{{ item.images }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
+        <!-- <image class="img-each" mode="aspectFill" src="{{ todo }}"></image> -->
+        <image class="img-each" mode="aspectFill" src="{{ todo }}" catchtap="showAllScreen" data-url="{{ todo }}"></image>
+      </block>
+    </view>
+    <view class="address">{{ item.address }}</view>
+    <view class="bottom">
+      <view class="time">{{ item.addtime }}</view>
+      <view class="delete" catchtap="deletePoint" data-pointId="{{ item.id }}" data-title="{{ item.title }}" data-storyId="{{ item.storyid }}">删除</view>
+    </view>
+  </view>
+</scroll-view>

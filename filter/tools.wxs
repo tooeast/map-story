@@ -1,6 +1,6 @@
 
   var calcTime = function (time) {
-    console.log('time');
+    // console.log('time');
     console.log(time);
 
     if(!time) {
@@ -11,8 +11,8 @@
     var reg = getRegExp('(\d{4})-(\d{2})-(\d{2})\s(\d{2}\:\d{2})\:\d{2}');
     var timeStr = str.match(reg);
 
-    console.log(str);
-    console.log(timeStr);
+    // console.log(str);
+    // console.log(timeStr);
 
     var year = parseInt(timeStr[1]);
 
@@ -56,8 +56,17 @@
   
     return res;
   }
+
+  var getSimTime = function (str) {
+    if(!str) return;
+    var reg = getRegExp('(\d{4})-(\d{2})-(\d{2})\s(\d{2}\:\d{2})\:\d{2}');
+    var timeStr = str.replace(reg, '$1-$2-$3');
+
+    return timeStr;
+  }
   
   module.exports = {
-    calcTime: calcTime
+    calcTime: calcTime,
+    getSimTime: getSimTime
   }
   
