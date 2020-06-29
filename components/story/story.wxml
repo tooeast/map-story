@@ -37,7 +37,7 @@
       </block>
     </view>
     <view class="btn-area">
-      <view class="btn-quan shadow">全</view>
+      <view class="btn-quan shadow" catchtap="showAllInfo" data-storyid="{{ story.id }}">全</view>
     </view>
   </view>
 </view>

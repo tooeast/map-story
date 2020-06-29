@@ -121,6 +121,14 @@ Component({
         current: e.currentTarget.dataset.url, // 当前显示图片的http链接
         urls: this.data.story.images // 需要预览的图片http链接列表
       })
+    },
+    showAllInfo(e) {
+      // console.log(e);
+      const storyId = e.currentTarget.dataset.storyid;
+
+      wx.navigateTo({
+        url: '/pages/article/article?id=' + storyId,
+      })
     }
   }
 })

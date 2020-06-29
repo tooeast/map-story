@@ -11,7 +11,7 @@ Page({
       'blue', 'cherry', 'deepblue', 'green', 'purple', 'red', 'yellow'
     ],
     isShowCall: true,
-    showMakerId: 1066,
+    showMakerId: 0,
     isShowStory: false,
     scale: 3
   },
