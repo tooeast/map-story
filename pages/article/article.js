@@ -9,13 +9,18 @@ Page({
     interval: 4000,
     duration: 800,
     circular: true,
-    articleInfo: {}
+    articleInfo: {},
+    id: null
   },
   onLoad(options) {
 
     console.log(options)
 
     const id = options.id;
+
+    this.setData({
+      id: id
+    })
 
     this.getArticleInfo(id);
   },
@@ -45,4 +50,18 @@ Page({
       urls: this.data.articleInfo.images ? this.data.articleInfo.images : [e.currentTarget.dataset.url]
     })
   },
+  onShareAppMessage(e) {
+    let title = this.data.articleInfo.title ? this.data.articleInfo.title : "来看我在足迹故事小程序的故事哦！";
+    return {
+      title: title,
+      path: `/pages/article/article?id=${this.data.id}`,
+      imageUrl: this.data.articleInfo.images ? this.data.articleInfo.images[0] : '',
+      success: () => {
+        wx.showToast({
+          title: '分享成功',
+          duration: 2000
+        })
+      }
+    }
+  }
 })

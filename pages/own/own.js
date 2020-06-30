@@ -66,5 +66,26 @@ Page({
     this.setData({
       isShowFeedback: true
     })
+  },
+  onShareAppMessage(e) {
+    let title = '';
+    
+    if(this.data.num > 0) {
+      title = `我在足迹故事小程序记录了 ${this.data.num} 个足迹点哦，一起来吧～`;
+    }
+    else {
+      title = '我在足迹故事小程序记录足迹哦，你也一起来吧～'
+    }
+    return {
+      title: title,
+      path: `/pages/index/index`,
+      imageUrl: this.data.userInfo.avatarUrl,
+      success: () => {
+        wx.showToast({
+          title: '分享成功',
+          duration: 2000
+        })
+      }
+    }
   }
 })

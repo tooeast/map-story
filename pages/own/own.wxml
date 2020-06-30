@@ -9,6 +9,8 @@
         <view class="nickname">{{ userInfo.nickName }}</view>
         <view class="num">我记录了 {{ num || 0 }} 个足迹哦～</view>
       </view>
+
+      <button size="mini" class="share" open-type="share" hover-stay-time="40"></button>
     </view>
 
     <view class="btn-area">

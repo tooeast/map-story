@@ -4,7 +4,16 @@
   <view class="back" bindtap="goBack"></view>
 
   <view class="poster" wx:if="{{ articleInfo.images && articleInfo.images.length }}">
-    <image class="poster-img" src="{{ articleInfo.images[0] }}" mode="widthFix"></image>
+    <!-- <image class="poster-img" src="{{ articleInfo.images[0] }}" mode="widthFix"></image> -->
+    <view class="images">
+      <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-color="{{indicator}}" indicator-active-color="{{active}}">
+        <block wx:for="{{ articleInfo.images }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
+          <swiper-item class="item">
+            <image class="img" src="{{ todo }}" mode="aspectFill" catchtap="showAllScreen" data-url="{{ todo }}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
     <view class="poster-txt">{{ articleInfo.title }}</view>
   </view>
 
@@ -29,7 +38,7 @@
       <view class="loc-txt">{{ articleInfo.address }}</view>
     </view>
 
-    <view class="images" wx:if="{{ articleInfo.images && articleInfo.images.length }}">
+    <!-- <view class="images" wx:if="{{ articleInfo.images && articleInfo.images.length }}">
       <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-color="{{indicator}}" indicator-active-color="{{active}}">
         <block wx:for="{{ articleInfo.images }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
           <swiper-item class="item">
@@ -37,10 +46,14 @@
           </swiper-item>
         </block>
       </swiper>
-    </view>
+    </view> -->
 
     <view class="content">
       <view class="content-txt">{{ articleInfo.story }}</view>
     </view>
+  </view>
+
+  <view class="btn-area">
+    <button size="mini" class="btn-quan shadow" open-type="share"></button>
   </view>
 </view>
