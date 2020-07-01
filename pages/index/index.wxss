@@ -80,15 +80,17 @@
 }
 .container .back-top .page-banner .swiper .swiper-main .area .text {
             position: absolute;
-            left: 15rpx;
-            bottom: 15rpx;
+            left: 0;
+            bottom: 0;
+            padding: 15rpx;
             display: inline-block;
-            max-width: 600rpx;
+            max-width: 550rpx;
             font-size: 15px;
             color: #fff;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
+            text-shadow: 1px 1px 8px #444;
 }
 .container .back-top .page-banner .swiper .swiper-main .back {
           position: absolute;

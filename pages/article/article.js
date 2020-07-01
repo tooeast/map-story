@@ -4,18 +4,16 @@ const app = getApp()
 
 Page({
   data: {
-    indicatorDots: true,
+    indicatorDots: false,
     autoplay: true,
     interval: 4000,
     duration: 800,
     circular: true,
     articleInfo: {},
-    id: null
+    id: null,
+    activeImg: 0
   },
   onLoad(options) {
-
-    console.log(options)
-
     const id = options.id;
 
     this.setData({
@@ -63,5 +61,10 @@ Page({
         })
       }
     }
+  },
+  bannerChange(e) {
+    this.setData({
+      activeImg: e.detail.current
+    })
   }
 })

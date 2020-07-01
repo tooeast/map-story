@@ -1,13 +1,19 @@
 <scroll-view class="container" scroll-y lower-threshold="100">
   <view class="back-top">
     <view class="search-area">
-      <text class="text">欢迎来到足迹故事～</text>
+      <text class="text">欢迎来到关于足迹～</text>
     </view>
     <view class="page-banner">
       <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-color="{{indicator}}" indicator-active-color="{{active}}" bindchange="bannerChange">
         <block wx:for="{{ bannerList }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
           <swiper-item class="swiper-main">
-            <navigator class="area">
+            <!-- <navigator class="area">
+              <image class="img" src="{{ todo.poster }}"></image>
+              <text class="text">{{ todo.title }}</text>
+            </navigator>
+            <view class="back" style="{{('background-image:url(' + todo.poster + ')')}}"></view> -->
+
+            <navigator class="area" url="{{ '/pages/article/article?id=' + todo.dataid }}">
               <image class="img" src="{{ todo.poster }}"></image>
               <text class="text">{{ todo.title }}</text>
             </navigator>

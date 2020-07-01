@@ -6,7 +6,7 @@
   <view class="poster" wx:if="{{ articleInfo.images && articleInfo.images.length }}">
     <!-- <image class="poster-img" src="{{ articleInfo.images[0] }}" mode="widthFix"></image> -->
     <view class="images">
-      <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-color="{{indicator}}" indicator-active-color="{{active}}">
+      <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-color="{{indicator}}" indicator-active-color="{{active}}" bindchange="bannerChange">
         <block wx:for="{{ articleInfo.images }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
           <swiper-item class="item">
             <image class="img" src="{{ todo }}" mode="aspectFill" catchtap="showAllScreen" data-url="{{ todo }}"></image>
@@ -15,6 +15,12 @@
       </swiper>
     </view>
     <view class="poster-txt">{{ articleInfo.title }}</view>
+
+    <view class="banner-point" wx:if="{{ articleInfo.images.length > 1 }}">
+      <block wx:for="{{ articleInfo.images.length }}" wx:for-item="key" wx:for-index="index" wx:key="index">
+        <view class="{{['point', key == activeImg ? 'active' : '' ]}}"></view>
+      </block>
+    </view>
   </view>
 
   <view class="main">
