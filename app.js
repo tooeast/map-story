@@ -22,5 +22,8 @@ App({
     isHaveNew: true
   },
   request: baseObj.request,
-  base: baseObj
+  base: baseObj,
+  onHide() {
+    this.globalData.isHaveNew = true;
+  }
 })

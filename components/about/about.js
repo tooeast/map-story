@@ -51,6 +51,11 @@ Component({
       this.setData({
         isShow: false
       })
+    },
+    show() {
+      this.setData({
+        isShow: true
+      })
     }
   }
 })

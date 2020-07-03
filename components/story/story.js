@@ -17,15 +17,16 @@ Component({
   },
 
   observers: {
-    markerId(newId) {
+    'markerId': function (newId) {
       console.log(newId);
 
       if(Number(newId) > 0) {
+        console.log(this);
         console.log('markerid change');
 
-        this.setData({
-          poster: '//blog.sansiro.me/image/2019-last-time.jpg'
-        })
+        // this.setData({
+        //   poster: '//blog.sansiro.me/image/2019-last-time.jpg'
+        // })
 
         this.getInfoByMarkerId(newId);
       }

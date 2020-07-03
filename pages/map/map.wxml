@@ -15,5 +15,5 @@
     <button class="map-reset" size="mini" bindtap="resetMap">复原</button>
   </view>
 
-  <map-story markerId="{{ showMakerId }}"></map-story>
+  <map-story id="story-box"></map-story>
 </view>

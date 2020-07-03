@@ -12,6 +12,10 @@ Page({
     isShowAbout: false,
     isShowFeedback: false
   },
+  onReady() {
+    this.about = this.selectComponent('#about-box');
+    this.feedback = this.selectComponent('#feedback-box');
+  },
   onShow() {
     if(this.data.isLogin) {
       this.getMapInfo();
@@ -58,14 +62,18 @@ Page({
     app.globalData.userInfo = userInfo;
   },
   aboutPage() {
-    this.setData({
-      isShowAbout: true
-    })
+    console.log('about');
+    // this.setData({
+    //   isShowAbout: true
+    // })
+    this.about.show();
   },
   feedbackPage() {
-    this.setData({
-      isShowFeedback: true
-    })
+    console.log('feedback');
+    // this.setData({
+    //   isShowFeedback: true
+    // })
+    this.feedback.show();
   },
   onShareAppMessage(e) {
     let title = '';

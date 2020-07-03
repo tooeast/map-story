@@ -4,9 +4,9 @@
   <view class="each" wx:for="{{ list }}" wx:for-item="item" wx:for-index="index" wx:key="index">
     <view class="title">{{ item.title }}</view>
     <view class="img-area">
-      <block wx:for="{{ item.images }}" wx:for-item="todo" wx:for-index="index" wx:key="index">
+      <block wx:for="{{ item.images }}" wx:for-item="todo" wx:for-index="imgIndex" wx:key="imgIndex">
         <!-- <image class="img-each" mode="aspectFill" src="{{ todo }}"></image> -->
-        <image class="img-each" mode="aspectFill" src="{{ todo }}" catchtap="showAllScreen" data-url="{{ todo }}"></image>
+        <image class="img-each" mode="aspectFill" src="{{ todo }}" catchtap="showAllScreen" data-url="{{ todo }}" data-index="{{ index }}"></image>
       </block>
     </view>
     <view class="address">{{ item.address }}</view>

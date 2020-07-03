@@ -208,3 +208,7 @@
   font-size: 26rpx;
 }
 
+.quan-hover {
+  background-color: #b1b1b1;
+}
+

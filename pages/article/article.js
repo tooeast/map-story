@@ -11,9 +11,16 @@ Page({
     circular: true,
     articleInfo: {},
     id: null,
-    activeImg: 0
+    activeImg: 0,
+    isShare: false
   },
   onLoad(options) {
+    if(options.from && options.from == 'share') {
+      this.setData({
+        isShare: true
+      })
+    }
+
     const id = options.id;
 
     this.setData({
@@ -38,9 +45,16 @@ Page({
     }
   },
   goBack() {
-    wx.navigateBack({
-      delta: 1
-    })
+    if(this.data.isShare) {
+      wx.switchTab({
+        url: '/pages/index/index'
+      })
+    }
+    else {
+      wx.navigateBack({
+        delta: 1
+      })
+    }
   },
   showAllScreen(e) {
     wx.previewImage({
@@ -52,7 +66,7 @@ Page({
     let title = this.data.articleInfo.title ? this.data.articleInfo.title : "来看我在足迹故事小程序的故事哦！";
     return {
       title: title,
-      path: `/pages/article/article?id=${this.data.id}`,
+      path: `/pages/article/article?id=${this.data.id}&from=share`,
       imageUrl: this.data.articleInfo.images ? this.data.articleInfo.images[0] : '',
       success: () => {
         wx.showToast({

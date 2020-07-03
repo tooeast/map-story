@@ -11,8 +11,12 @@ Page({
     this.getUserList();
   },
   async getUserList() {
+    wx.showLoading({
+      title: 'loading'
+    });
     let res = await app.request('/api/map/MapPc/getUserPointList');
 
+    wx.hideLoading();
     if(res.code == 0) {
       this.setData({
         list: res.data
@@ -20,9 +24,10 @@ Page({
     }
   },
   showAllScreen(e) {
+    // console.log(e);
     wx.previewImage({
       current: e.currentTarget.dataset.url, // 当前显示图片的http链接
-      urls: [e.currentTarget.dataset.url] // 需要预览的图片http链接列表
+      urls: this.data.list[e.currentTarget.dataset.index].images // 需要预览的图片http链接列表
     })
   },
   deletePoint(e) {

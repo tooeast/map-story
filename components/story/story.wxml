@@ -13,7 +13,7 @@
           <view class="address">
             <view class="address-txt">{{ story.address }}</view>
           </view>
-          <view class="time">{{ tools.calcTime(story.addtime) }}</view>
+          <view class="time">{{ tools.calcTime(story.addtime || '') }}</view>
         </view>
 
         <scroll-view scroll-x class="images-area" wx:if="{{ story.images && story.images.length }}">
@@ -37,7 +37,7 @@
       </block>
     </view>
     <view class="btn-area">
-      <view class="btn-quan shadow" catchtap="showAllInfo" data-storyid="{{ story.id }}">全</view>
+      <view class="btn-quan shadow" hover-class="quan-hover" hover-stay-time="40" catchtap="showAllInfo" data-storyid="{{ story.id }}">全</view>
     </view>
   </view>
 </view>

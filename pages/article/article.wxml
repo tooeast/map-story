@@ -60,6 +60,6 @@
   </view>
 
   <view class="btn-area">
-    <button size="mini" class="btn-quan shadow" open-type="share"></button>
+    <button size="mini" class="btn-quan shadow" open-type="share" hover-class="share-hover" hover-stay-time="40"></button>
   </view>
 </view>

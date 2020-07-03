@@ -25,10 +25,12 @@
 		},
 		"useIsolateContext": true,
 		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"packNpmManually": false,
+		"packNpmRelationList": []
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.1",
+	"libVersion": "2.11.3",
 	"appid": "wx2656f15afed59b44",
 	"projectname": "map-story",
 	"debugOptions": {
@@ -93,7 +95,7 @@
 					"id": 4,
 					"name": "article",
 					"pathName": "pages/article/article",
-					"query": "id=ms1001",
+					"query": "id=ms1001&from=share",
 					"scene": null
 				}
 			]

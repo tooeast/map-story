@@ -9,7 +9,7 @@ Component({
   },
 
   data: {
-    qrcode: '//cdn.521plus.com/qrcode-wechat.png'
+    qrcode: 'http://cdn.521plus.com/qrcode-wechat.png'
   },
 
   created() {
@@ -60,6 +60,11 @@ Component({
       wx.previewImage({
         current: this.data.qrcode,
         urls: [this.data.qrcode]
+      })
+    },
+    show() {
+      this.setData({
+        isShow: true
       })
     }
   }

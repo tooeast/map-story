@@ -11,12 +11,14 @@ Page({
       'blue', 'cherry', 'deepblue', 'green', 'purple', 'red', 'yellow'
     ],
     isShowCall: true,
-    showMakerId: 0,
+    showMarkerId: 0,
     isShowStory: false,
-    scale: 3
+    scale: 3,
   },
   onReady: function (e) {
-    this.mapCtx = wx.createMapContext('myMap')
+    this.mapCtx = wx.createMapContext('myMap');
+
+    this.box = this.selectComponent('#story-box');
   },
   onLoad() {
     // 未登录
@@ -108,12 +110,9 @@ Page({
     console.log(e)
   },
   markertap(e) {
-    console.log(e);
+    const newId = Number(e.markerId);
 
-    this.setData({
-      showMakerId: e.detail.markerId,
-      isShowStory: true
-    })
+    this.box.getInfoByMarkerId(newId);
   },
   isShowCallBtn() {
     if(this.data.isShowCall) {
